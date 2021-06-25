@@ -1,0 +1,51 @@
+{
+  "name": "microsummer",
+  "version": "1.0.0",
+  "description": "microservices via Node",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack — entry ./app/public/js/index.js - output-filename bundle.min.js - output-path ./app/public/js",
+    "start": "nodemon — exec babel-node server.js",
+    "sequelize-skeleton": "./node_modules/sequelize-cli/lib/sequelize init:models; ./node_modules/sequelize-cli/lib/sequelize init:config",
+    "init-db": "cd /opt/lampp/bin/ && echo ‘DROP DATABASE IF EXISTS api_node_demo; CREATE DATABASE api_node_demo CHARACTER SET utf8 COLLATE utf8_general_ci’ | ./pg -u root && cd -"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vakuum099/microSummer.git"
+  },
+  "keywords": [
+    "Microservices",
+    "Node.js",
+    "MySQL",
+    "sequelize"
+  ],
+  "author": "Kost Vakulenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vakuum099/microSummer/issues"
+  },
+  "homepage": "https://github.com/vakuum099/microSummer#readme",
+  "dependencies": {
+    "braces": "^3.0.2",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.1",
+    "@types/express": "^4.17.12",
+    "@types/uuid": "^8.3.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "faker": "^5.5.3",
+    "lodash.random": "^3.2.0",
+    "lodash.times": "^4.3.2",
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0",
+    "typescript": "^4.3.4",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "type": "module"
+}
