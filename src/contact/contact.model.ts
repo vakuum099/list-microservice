@@ -1,29 +1,29 @@
 import * as Sequelize from 'sequelize';
-import { microSequelize as sequelize } from '../servers.js';
-import { IContact } from './contact.interfaces.js';
+import { sequelize } from '../servers.js';
+import { IContact } from './contact.interfaces';
 
-export class Contact extends Sequelize.Model<IContact> {}
+class Contact extends Sequelize.Model<IContact> {}
 
 Contact.init(
   {
     uuid: {
-      type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4,
-      autoIncrement: true,
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
+      unique: true,
     },
     name: {
-      type: Sequelize.STRING,
+      type: Sequelize.DataTypes.STRING,
       allowNull: false,
     },
     email: {
-      type: Sequelize.STRING,
+      type: Sequelize.DataTypes.STRING,
       allowNull: false,
     },
   },
   {
     sequelize,
-    modelName: 'list',
+    modelName: 'contact',
   }
 );

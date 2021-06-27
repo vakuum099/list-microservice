@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { Request, Response } from 'express';
-
-import { router as ContactRoutes } from './contact/contact.routes.js';
+import { router as ContactRoutes } from './contact/contact.routes';
 
 export const router: Router = Router();
 

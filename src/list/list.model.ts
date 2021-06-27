@@ -1,19 +1,20 @@
 import * as Sequelize from 'sequelize';
-import { microSequelize as sequelize } from '../servers.js';
-import { IList } from './list.interfaces.js';
+import { sequelize as sequelize } from '../servers';
+import { IList } from './list.interfaces';
 
 class List extends Sequelize.Model<IList> {}
+
 List.init(
   {
     uuid: {
-      type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4,
-      autoIncrement: true,
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
+      unique: true,
     },
     name: {
-      type: Sequelize.STRING,
+      type: Sequelize.DataTypes.STRING,
       allowNull: false,
     },
   },

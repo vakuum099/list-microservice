@@ -1,4 +1,4 @@
-import { FileOperationResult } from './interfaces.js';
+import { FileOperationResult } from './interfaces';
 
 export const addedContact201: FileOperationResult = {
   code: 201,

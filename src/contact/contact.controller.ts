@@ -1,5 +1,5 @@
-import { AskToWorkWithDB, FileOperationResult } from '../interfaces.js';
-import { creatNewContact, updateExistedContact } from './contact.service.js';
+import { AskToWorkWithDB, FileOperationResult } from '../interfaces';
+import { creatNewContact, updateExistedContact } from './contact.service';
 
 export const creatContact: AskToWorkWithDB = async (req, res) => {
   const resultOfCreatContact: FileOperationResult = await creatNewContact(req);
