@@ -1,0 +1,1 @@
+curl -X POST -H "document: application/json" -d @newList.txt http://localhost:3000/list/

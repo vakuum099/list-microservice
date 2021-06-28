@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { ResultSetHeader } from 'mysql2';
 
-export interface FileOperationResult {
+export interface DBOperationResult {
   code: number;
   content: string;
 }
@@ -11,7 +11,7 @@ export interface UpdateStringHelper {
 }
 
 export interface WorkWithDB {
-  (req: Request): Promise<FileOperationResult>;
+  (req: Request): Promise<DBOperationResult>;
 }
 
 export interface AskToWorkWithDB {

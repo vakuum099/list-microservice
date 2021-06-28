@@ -1,14 +1,14 @@
-import { ShowResult, UpdateStringHelper } from '../interfaces';
+import { ContactsList } from "../contactsList/contactsList.model";
+import { sanitizeRawArray } from "../utils/utils";
+import { Contact } from "./contact.model";
+import { getContactFromDB } from "./contact.service";
 
-export const updateStringHelper: UpdateStringHelper = (req) => {
-  const uuid = req.params.contactId;
-  const { name, email } = JSON.parse(req.body.contact);
-  let newName = !name ? '' : `contacts.name='${name}'`;
-  const newEmail = !email ? '' : `contacts.email='${email}'`;
-  if (newName && newEmail) {
-    newName = newName.concat(',');
-  }
-  return `UPDATE contacts SET ${newName} ${newEmail} WHERE contacts.uuid='${uuid}'`;
-};
-
-export const showResult: ShowResult = (res) => console.log(res);
+export const getListOfContacts = async (rawArray: ContactsList[]) => {
+    const idArray = sanitizeRawArray(rawArray);
+    let contacts: Contact[] = [];
+    for (let i = 0; i < idArray.length; i++) {
+        const contactString = await getContactFromDB(idArray[i].contactId);
+        contacts.push(sanitizeRawArray(contactString)[0]);
+    }
+    return contacts;
+}

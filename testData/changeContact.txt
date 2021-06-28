@@ -1,1 +1,1 @@
-contact={"name":"Wonderwoman"}
+contact={"name":"Friends"}

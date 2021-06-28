@@ -2,7 +2,7 @@ import * as Sequelize from 'sequelize';
 import { sequelize as sequelize } from '../servers';
 import { IList } from './list.interfaces';
 
-class List extends Sequelize.Model<IList> {}
+export class List extends Sequelize.Model<IList> {}
 
 List.init(
   {
@@ -23,3 +23,5 @@ List.init(
     modelName: 'list',
   }
 );
+
+List.sync();

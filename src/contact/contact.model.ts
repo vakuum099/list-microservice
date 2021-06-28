@@ -2,7 +2,7 @@ import * as Sequelize from 'sequelize';
 import { sequelize } from '../servers.js';
 import { IContact } from './contact.interfaces';
 
-class Contact extends Sequelize.Model<IContact> {}
+export class Contact extends Sequelize.Model<IContact> {}
 
 Contact.init(
   {
@@ -27,3 +27,5 @@ Contact.init(
     modelName: 'contact',
   }
 );
+
+Contact.sync();
