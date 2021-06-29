@@ -5,4 +5,4 @@ export const router = Router();
 
 router.post('/', createList);
 router.get('/:listId', getList);
-router.post('/:listId', addContactToList)
+router.post('/:listId', addContactToList);

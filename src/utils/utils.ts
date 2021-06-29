@@ -1,10 +1,9 @@
-import { Contact } from "../contact/contact.model";
-import { ContactsList } from "../contactsList/contactsList.model";
+import { SanitizeRawArray } from './interface';
 
-export const sanitizeRawArray = (rawArray: ContactsList[] | Contact[]) => {
-    return JSON.parse(JSON.stringify(rawArray));
-}
+export const sanitizeRawArray: SanitizeRawArray<unknown> = (rawArray) => {
+  return JSON.parse(JSON.stringify(rawArray));
+};
 
-export const showData = (data: unknown) => {
-    console.log(data);
-}
+export const showData = (data: unknown): void => {
+  console.log(data);
+};

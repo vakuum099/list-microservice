@@ -17,5 +17,5 @@ export const errorNotFound404: DBOperationResult = {
 
 export const internalServerError500: DBOperationResult = {
   code: 500,
-  content: ' Wow Internal Server Error.',
+  content: 'Internal Server Error.',
 };

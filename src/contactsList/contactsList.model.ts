@@ -3,7 +3,7 @@ import { sequelize as sequelize } from '../servers';
 import { IContactsList } from './contactsList.interface';
 
 export class ContactsList extends Sequelize.Model<IContactsList> {
-    [x: string]: any;
+  [x: string]: any;
 }
 
 ContactsList.init(
@@ -16,19 +16,19 @@ ContactsList.init(
       unique: true,
     },
     listId: {
-        type: Sequelize.DataTypes.UUID,
-        defaultValue: Sequelize.DataTypes.UUIDV4,
-        primaryKey: false,
-        allowNull: false,
-        unique: false,
-      },
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.DataTypes.UUIDV4,
+      primaryKey: false,
+      allowNull: false,
+      unique: false,
+    },
     contactId: {
-        type: Sequelize.DataTypes.UUID,
-        defaultValue: Sequelize.DataTypes.UUIDV4,
-        primaryKey: false,
-        allowNull: false,
-        unique: false,
-      },
+      type: Sequelize.DataTypes.UUID,
+      defaultValue: Sequelize.DataTypes.UUIDV4,
+      primaryKey: false,
+      allowNull: false,
+      unique: false,
+    },
   },
   {
     sequelize,
