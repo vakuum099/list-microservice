@@ -8,7 +8,6 @@ import { showResult, updateStringHelper } from './contact.utils';
 export const creatNewContact: WorkWithDB = async (req) => {
   const { name, email } = JSON.parse(req.body.contact);
   const query = `INSERT INTO contacts (uuid, name, email, createdAt, updatedAt) VALUES('${uuidv4()}', '${name}', '${email}', now(), now());`;
-  console.log(query);
   try {
     const res = (await sequelize.query(query)) as ResultSetHeader[];
     showResult(res);
