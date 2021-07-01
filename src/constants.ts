@@ -2,7 +2,7 @@ import { DBOperationResult } from './interfaces';
 
 export const addedData201: DBOperationResult = {
   code: 201,
-  content: 'Contact sucessfully added.',
+  content: 'Data sucessfully added.',
 };
 
 export const OK200: DBOperationResult = {

@@ -1,8 +1,15 @@
 import * as Sequelize from 'sequelize';
-import { sequelize as sequelize } from '../servers';
-import { IList } from './list.interfaces';
+import { BelongsToMany, Model, Table } from 'sequelize-typescript';
+import { sequelize } from '../servers';
+import { Contact } from '../contact/contact.model';
+import { ContactList } from '../contactList/contactList.model';
+import { ListAttributes, ListCreationAttribute } from './list.interfaces';
 
-export class List extends Sequelize.Model<IList> {}
+@Table
+export class List extends Model<ListAttributes, ListCreationAttribute> {
+  @BelongsToMany(() => Contact, () => ContactList)
+  contacts!: Array<typeof Contact & { ContactList: ContactList }>;
+}
 
 List.init(
   {

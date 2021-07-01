@@ -1,15 +1,13 @@
-import { ContactsList } from '../contactsList/contactsList.model';
+import { Optional } from 'sequelize';
 
-export interface IContact {
-  uuid: string;
+export interface ContactAttributes {
+  uuid?: string;
   name: string;
   email: string;
 }
 
-export interface GetListOfContacts {
-  (rawArray: ContactsList[]): Promise<IContact[]>;
-}
+export interface ContactCreationAttribute extends Optional<ContactAttributes, 'uuid'> {}
 
 export interface GetContactFromDB {
-  (contactId: string): Promise<IContact[]>;
+  (contactId: string): Promise<ContactAttributes[]>;
 }

@@ -1,50 +1,44 @@
-import { v4 as uuidv4 } from 'uuid';
 import { addedData201, internalServerError500, OK200 } from '../constants';
-import { getListOfContacts } from '../contact/contact.utils';
-import { ContactsList } from '../contactsList/contactsList.model';
 import { WorkWithDB } from '../interfaces';
-import { showData } from '../utils/utils';
+import { Contact } from '../contact/contact.model';
 import { List } from './list.model';
+import { showData } from '../utils/utils';
 
 export const createNewList: WorkWithDB = async (req) => {
-  const { name } = JSON.parse(req.body.list) as { name: string };
+  const { name } = req.body;
   try {
     const res = await List.create({
-      uuid: uuidv4(),
       name,
     });
     return addedData201;
-  } catch (err) {
+  } catch {
     return internalServerError500;
   }
 };
 
 export const getContactsOfList: WorkWithDB = async (req) => {
   const listId: string = req.params.listId;
+  const list = (await List.findByPk(listId)) as List;
   try {
-    const res = await ContactsList.findAll({
-      attributes: ['contactId'],
-      where: { listId },
+    const listOfContacts = await list.$get('contacts', {
+      attributes: ['name', 'email'],
     });
-    const answer = await getListOfContacts(res);
-    showData(answer);
+    showData(listOfContacts);
     return OK200;
-  } catch (err) {
+  } catch {
     return internalServerError500;
   }
 };
 
 export const addNewContactToList: WorkWithDB = async (req) => {
   const listId: string = req.params.listId;
-  const { contactId } = JSON.parse(req.body.contactId) as { contactId: string };
+  const list = (await List.findByPk(listId)) as List;
+  const { contactId } = req.body;
+  const contact = (await Contact.findByPk(contactId)) as Contact;
   try {
-    const res = await ContactsList.create({
-      uuid: uuidv4(),
-      listId,
-      contactId,
-    });
+    await list.$add('contact', contactId);
     return addedData201;
-  } catch (err) {
+  } catch {
     return internalServerError500;
   }
 };
