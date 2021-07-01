@@ -1,1 +1,1 @@
-list={"name":"Friends"}
+name=Family

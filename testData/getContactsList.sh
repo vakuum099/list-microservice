@@ -1,1 +1,0 @@
-curl -X GET -H "document: application/json" -d @addContactToList.txt http://localhost:3000/list/3efc4947-7899-45de-8786-aeb3139f68d3
