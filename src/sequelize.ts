@@ -1,6 +1,10 @@
 import { Sequelize } from 'sequelize-typescript';
+import { Dialect } from 'sequelize/types';
+import { dataBaseDialect, dataBaseHost, dataBaseName, dataBasePassword, dataBaseUser } from './constants';
 
-export const sequelize = new Sequelize('listsdb', 'root', 'M8NageUdWMEZHXn', {
-  dialect: 'mysql',
-  host: 'localhost',
+const dialect = dataBaseDialect as Dialect;
+
+export const sequelize = new Sequelize(dataBaseName, dataBaseUser, dataBasePassword, {
+  dialect: dialect,
+  host: dataBaseHost,
 });
