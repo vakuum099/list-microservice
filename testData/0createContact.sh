@@ -1,0 +1,3 @@
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d @./contacts/harryName.txt -d @./contacts/harryEmail.txt http://localhost:3000/contact/
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d @./contacts/dirkName.txt -d @./contacts/dirkEmail.txt http://localhost:3000/contact/
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d @./contacts/spiderName.txt -d @./contacts/spiderEmail.txt http://localhost:3000/contact/

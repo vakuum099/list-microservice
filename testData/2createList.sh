@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d @newList.txt http://localhost:3000/list/
