@@ -5,6 +5,8 @@ import { Contact } from './contact.model';
 
 export const createNewContact: WorkWithDB = async (req) => {
   const { name, email } = req.body as ContactAttributes;
+  const query = `INSERT INTO contacts (uuid, name, email, createdAt, updatedAt) VALUES('${uuidv4()}', '${name}', '${email}', now(), now());`;
+
   try {
     const res = await Contact.create({
       name,
