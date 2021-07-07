@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { creatContact, updateContact } from './contact.controller';
+import { createContact, updateContact } from './contact.controller';
 
 export const router = Router();
 
-router.post('/', creatContact);
+router.post('/', createContact);
 router.patch('/:contactId', updateContact);

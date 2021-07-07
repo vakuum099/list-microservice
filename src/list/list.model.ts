@@ -1,25 +1,23 @@
-import * as Sequelize from 'sequelize';
-import { sequelize as sequelize } from '../servers';
-import { IList } from './list.interfaces';
+import { BelongsToMany, Column, Model, Table } from 'sequelize-typescript';
+import { Contact } from '../contact/contact.model';
+import { ContactList } from '../contactList/contactList.model';
+import { ListAttributes, ListCreationAttribute } from './list.interfaces';
+import { UUID, UUIDV4 } from 'sequelize';
 
-class List extends Sequelize.Model<IList> {}
+@Table
+export class List extends Model<ListAttributes, ListCreationAttribute> {
+  @BelongsToMany(() => Contact, () => ContactList)
+  contacts!: Array<typeof Contact & { ContactList: ContactList }>;
 
-List.init(
-  {
-    uuid: {
-      type: Sequelize.DataTypes.UUID,
-      defaultValue: Sequelize.DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false,
-      unique: true,
-    },
-    name: {
-      type: Sequelize.DataTypes.STRING,
-      allowNull: false,
-    },
-  },
-  {
-    sequelize,
-    modelName: 'list',
-  }
-);
+  @Column({
+    type: UUID,
+    defaultValue: UUIDV4,
+    primaryKey: true,
+    allowNull: false,
+    unique: true,
+  })
+  uuid!: string;
+
+  @Column({ field: 'name' })
+  name!: string;
+}

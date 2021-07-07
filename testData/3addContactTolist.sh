@@ -1,0 +1,3 @@
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d @./contactsToList/addContactToList.txt http://localhost:3000/list/0e22025c-042f-4beb-9699-d98c2d1f2a73
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d @./contactsToList/addContactToList2.txt http://localhost:3000/list/0e22025c-042f-4beb-9699-d98c2d1f2a73
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d @./contactsToList/addContactToList3.txt http://localhost:3000/list/0e22025c-042f-4beb-9699-d98c2d1f2a73
